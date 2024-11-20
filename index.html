@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cyph Tracker</title>
+</head>
+<body>
+    <h1>Welcome to Cyph Tracker</h1>
+    <a href="/add_cyph">Add a Cyph</a> | <a href="/add_purchase">Add a Purchase</a> | <a href="/summary">View Summary</a>
+
+    <h2>All Cyphs</h2>
+    <ul>
+        {% for cyph in cyphs %}
+        <li>{{ cyph.strain }} by {{ cyph.provider }} ({{ cyph.bowls }} bowls, Participants: {{ cyph.participants }})</li>
+        {% endfor %}
+    </ul>
+
+    <h2>All Purchases</h2>
+    <ul>
+        {% for purchase in purchases %}
+        <li>{{ purchase.buyer }} bought for ${{ purchase.amount }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

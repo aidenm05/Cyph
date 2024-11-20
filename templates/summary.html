@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Summary</title>
+</head>
+<body>
+    <h1>Summary</h1>
+    <h2>Total Spent: ${{ total_spent }}</h2>
+    <ul>
+        {% for buyer, amount in breakdown.items() %}
+        <li>{{ buyer }}: ${{ amount }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/">Back</a>
+</body>
+</html>

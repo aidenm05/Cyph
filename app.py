@@ -7,7 +7,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cyph.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-# Define your model
 class Cyph(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     strain = db.Column(db.String(80), nullable=False)

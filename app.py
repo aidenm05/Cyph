@@ -18,11 +18,7 @@ class Purchase(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     buyer = db.Column(db.String(100))
     amount = db.Column(db.Float)
-@app.route('/')
-def index():
-    cyphs = Cyph.query.all()  # Fetch all entries in the Cyph table
-    return f"Cyph count: {len(cyphs)}"
-# Routes
+
 @app.route('/')
 def index():
     cyphs = Cyph.query.all()

@@ -19,12 +19,12 @@ class Purchase(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     buyer = db.Column(db.String(100))
     amount = db.Column(db.Float)
-
 @app.route('/')
 def index():
     cyphs = Cyph.query.all()
+    cyph_count = len(cyphs)  # Get the count of cyphs
     purchases = Purchase.query.all()
-    return render_template('index.html', cyphs=cyphs, purchases=purchases)
+    return render_template('index.html', cyphs=cyphs, purchases=purchases, cyph_count=cyph_count)
 
 @app.route('/add_cyph', methods=['GET', 'POST'])
 def add_cyph():

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -6,19 +6,22 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///cyph.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-# Database models
+# Define your model
 class Cyph(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    strain = db.Column(db.String(100))
-    provider = db.Column(db.String(100))
-    bowls = db.Column(db.Integer)
-    participants = db.Column(db.Text)  # Comma-separated names
+    strain = db.Column(db.String(80), nullable=False)
+    provider = db.Column(db.String(80), nullable=False)
+    bowls = db.Column(db.Integer, nullable=False)
+    participants = db.Column(db.String(200), nullable=False)
 
 class Purchase(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     buyer = db.Column(db.String(100))
     amount = db.Column(db.Float)
-
+@app.route('/')
+def index():
+    cyphs = Cyph.query.all()  # Fetch all entries in the Cyph table
+    return f"Cyph count: {len(cyphs)}"
 # Routes
 @app.route('/')
 def index():
